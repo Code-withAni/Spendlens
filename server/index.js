@@ -72,7 +72,7 @@ app.use('/api/audit', require('./routes/audit'));
 app.use('/api/leads', require('./routes/leads'));
 app.use('/api/share', require('./routes/share'));
 
-const server = app.listen(PORT, async () => {
+const server = app.listen(PORT,'0.0.0.0' ,async () => {
   console.log(`\n🚀 Server running on port ${PORT}`);
   await checkSupabaseConnection();
 });
