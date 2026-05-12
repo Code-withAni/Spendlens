@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Mail, CheckCircle, Loader2, Send } from 'lucide-react';
 
 const LeadCapture = ({ uuid }) => {

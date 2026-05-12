@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFormStore } from '../store/formStore';
 import Step1_Context from '../components/SpendForm/Step1_Context';
 import Step2_Tools from '../components/SpendForm/Step2_Tools';
@@ -88,6 +87,65 @@ const Home = () => {
              <div className="font-black text-2xl tracking-tighter italic">Codeium</div>
           </div>
         </div>
+      )}
+
+      {/* How it Works Section */}
+      {step === 1 && (
+        <section id="how-it-works" className="w-full max-w-5xl mt-24 mb-32 pt-24 border-t border-border/50 scroll-mt-24">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-foreground">
+              A data-driven audit in <span className="text-primary">3 steps.</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium">
+              We compare your actual spend against hundreds of pricing data points to find every dollar left on the table.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="space-y-6 group">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary font-black text-2xl group-hover:scale-110 transition-transform duration-500">
+                1
+              </div>
+              <h3 className="text-2xl font-black tracking-tight text-foreground">Input Your Stack</h3>
+              <p className="text-muted-foreground font-medium leading-relaxed">
+                Tell us which AI tools you use (Cursor, Claude, Copilot, etc.) and what you're currently paying for seats and plans.
+              </p>
+            </div>
+
+            <div className="space-y-6 group">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary font-black text-2xl group-hover:scale-110 transition-transform duration-500">
+                2
+              </div>
+              <h3 className="text-2xl font-black tracking-tight text-foreground">Deterministic Audit</h3>
+              <p className="text-muted-foreground font-medium leading-relaxed">
+                Our engine runs your data through hundreds of pricing rules to identify plan mismatches, redundancy, and credit eligibility.
+              </p>
+            </div>
+
+            <div className="space-y-6 group">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary font-black text-2xl group-hover:scale-110 transition-transform duration-500">
+                3
+              </div>
+              <h3 className="text-2xl font-black tracking-tight text-foreground">Instant Results</h3>
+              <p className="text-muted-foreground font-medium leading-relaxed">
+                Get a personalized report with specific actions to reclaim your budget, plus an AI-generated summary of your stack health.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-20 p-8 glass rounded-[2.5rem] border border-primary/20 bg-primary/5 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="space-y-2">
+              <h4 className="text-xl font-black tracking-tight text-foreground">Ready to stop overpaying?</h4>
+              <p className="text-muted-foreground font-medium">Join 500+ startups optimizing their AI infra spend.</p>
+            </div>
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/20"
+            >
+              Start Free Audit
+            </button>
+          </div>
+        </section>
       )}
     </div>
   );

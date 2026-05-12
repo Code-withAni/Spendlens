@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormStore } from '../../store/formStore';
 import { ChevronLeft, Loader2, BarChart2, AlertCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
