@@ -1,13 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const http = require('http');
 const supabase = require('./lib/supabase');
 
 const app = express();
-const PORT = Number(process.env.PORT) || 5001;
+const PORT = process.env.PORT || 5001;
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:4173'],
+  origin: '*', // Allow all origins in production for now to avoid CORS issues on Render
   methods: ['GET', 'POST'],
   credentials: true
 }));
@@ -34,6 +35,11 @@ async function checkSupabaseConnection() {
   }
   console.log('');
 }
+
+// Root route for Render health check
+app.get('/', (req, res) => {
+  res.json({ message: 'SpendLens API is live', mode: process.env.NODE_ENV || 'development' });
+});
 
 // Basic health check
 app.get('/health', (req, res) => {
@@ -72,8 +78,10 @@ app.use('/api/audit', require('./routes/audit'));
 app.use('/api/leads', require('./routes/leads'));
 app.use('/api/share', require('./routes/share'));
 
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n🚀 Server running on port ${PORT}`);
+const server = http.createServer(app);
+
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n🚀 Server is listening on 0.0.0.0:${PORT}`);
   checkSupabaseConnection();
 });
 
