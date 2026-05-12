@@ -22,7 +22,7 @@ async function checkSupabaseConnection() {
     : '❌ NOT SET');
 
   try {
-    const { data, error } = await supabase.from('audits').select('count').limit(1);
+    const { error } = await supabase.from('audits').select('count').limit(1);
     if (error) {
       console.log('   Status: ❌ FAILED -', error.message);
       console.log('   Hint:', error.hint || 'Check your SUPABASE_SERVICE_KEY and table exists');
@@ -44,7 +44,7 @@ app.get('/health', (req, res) => {
 app.get('/test-supabase', async (req, res) => {
   console.log('\n🔌 Manual Supabase test triggered...');
   try {
-    const { data, error } = await supabase.from('audits').select('count').limit(1);
+    const { error } = await supabase.from('audits').select('count').limit(1);
 
     if (error) {
       console.log('   ❌ FAILED:', error.message);

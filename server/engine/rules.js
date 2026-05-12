@@ -1,7 +1,7 @@
 // server/engine/rules.js
 const { PRICING } = require('./pricing');
 
-function auditTool({ tool, plan, seats, monthlySpend, useCase, teamSize }) {
+function auditTool({ tool, plan, seats, monthlySpend }) {
   const toolPricing  = PRICING[tool];
   const currentPlan  = toolPricing ? toolPricing[plan] : null;
   const spendNum     = parseFloat(monthlySpend) || 0;
