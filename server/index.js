@@ -4,7 +4,7 @@ const cors = require('cors');
 const supabase = require('./lib/supabase');
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = Number(process.env.PORT) || 5001;
 
 app.use(cors({
   origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:4173'],
@@ -72,9 +72,9 @@ app.use('/api/audit', require('./routes/audit'));
 app.use('/api/leads', require('./routes/leads'));
 app.use('/api/share', require('./routes/share'));
 
-const server = app.listen(PORT,'0.0.0.0' ,async () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n🚀 Server running on port ${PORT}`);
-  await checkSupabaseConnection();
+  checkSupabaseConnection();
 });
 
 server.on('error', (err) => {
